@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 import CryptoTracker.graph as graph
 
 # menubar = Menu(menu)
@@ -135,6 +136,8 @@ class Settings(Page):
         minutePercentageButton = tk.Button(self, text="Submit", command=self.onButtonMinute)
         minutePercentageButton.pack(side="left")
 
+    def validateNumber(self):
+        messagebox.showerror("Phone number is not a valid length")
 
     def onButtonMinute(self):
         percentage = self.entryPercentageMinute.get()
@@ -151,6 +154,8 @@ class Settings(Page):
 
     def onButton(self):
         number = self.entry.get()
+        if len(number) != 11:
+            self.validateNumber()
         file = open("phone.txt", "w")
         file.write(number)
         file.close()
