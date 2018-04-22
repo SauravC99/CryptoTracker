@@ -1,3 +1,5 @@
+#Nathan Gardner
+
 import tkinter as tk
 from tkinter import messagebox
 import CryptoTracker.graph as graph
@@ -137,7 +139,8 @@ class Settings(Page):
         minutePercentageButton.pack(side="left")
 
     def validateNumber(self):
-        messagebox.showerror("Phone number is not a valid length")
+        messagebox.showerror("Error", "Phone number is not a valid length, enter an 11 digit phone number\n"
+                                             "with country code. Example: 17146723892")
 
     def onButtonMinute(self):
         percentage = self.entryPercentageMinute.get()
@@ -153,14 +156,15 @@ class Settings(Page):
         file.close()
 
     def onButton(self):
+        isLetter = 0
         number = self.entry.get()
-        if len(number) != 11:
+        numberStrip = number.strip('.')
+        if len(numberStrip) != 11:
             self.validateNumber()
-        file = open("phone.txt", "w")
-        file.write(number)
-        file.close()
-
-
+        if len(numberStrip) == 11 and numberStrip.isnumeric() == True:
+            file = open("phone.txt", "w")
+            file.write(numberStrip)
+            file.close()
 
 class MainView(tk.Frame):
     def __init__(self, *args, **kwargs):
