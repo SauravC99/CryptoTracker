@@ -1,6 +1,7 @@
 from __future__ import print_function
 from telesign.messaging import MessagingClient
-from API import *
+from historicalPrice import *
+from currentPrice import *
 import time
 
 a = getPrice()
