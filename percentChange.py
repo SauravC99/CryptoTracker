@@ -62,22 +62,22 @@ def getPhoneNumber():
 def getCoin():
     pass
 
-def getChangeMonth():
-    values = currency("month", getCoin())
+def getChangeMonth(coin):
+    values = currency("month", coin)
     #Get a list of the values of the dictionary
     values = list(values.values())
     change = ((values[-1] - values[0]) / values[0]) * 100
     return change
 
-def getChangeWeek():
-    values = currency("week", getCoin())
+def getChangeWeek(coin):
+    values = currency("week", coin)
     #Get a list of the values of the dictionary
     values = list(values.values())
     change = ((values[-1] - values[0]) / values[0]) * 100
     return change
 
-def getChangeDay():
-    values = currency("day", getCoin())
+def getChangeDay(coin):
+    values = currency("day", coin)
     #Get a list of the values of the dictionary
     values = list(values.values())
     change = ((values[-1] - values[0]) / values[0]) * 100
@@ -104,5 +104,5 @@ def main():
         #Loop every 5 minutes because that's when API updates
         time.sleep(300)
 
-main()
+#main()
 

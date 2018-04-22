@@ -58,7 +58,7 @@ def currency(limit, symbol):
         for i in range(0, len(df), 20):
             dict_ = df[i]
             time = dict_["time"]
-            _dict[time] = i
+            _dict[time] = df[i]["close"]
         return _dict
 
 #asks for user input for currency and time frame
@@ -66,5 +66,3 @@ def main():
     curr_input = input("What currency do you want? (symbol; ex. (BTC)")
     time_frame = input("What time frame? (ex. month, day, week)")
     print(currency(time_frame, curr_input))
-
-
