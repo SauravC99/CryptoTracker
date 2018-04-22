@@ -121,7 +121,10 @@ class Settings(Page):
         label = tk.Label(self, text="Phone number - Example: 11231231234")
         label.pack(side="right", padx=25)
     def onButton(self):
-        print(self.entry.get())
+        number = self.entry.get()
+        file = open("phone.txt", "w")
+        file.write(number)
+        file.close()
 
 
 
