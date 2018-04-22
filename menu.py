@@ -115,11 +115,13 @@ class Settings(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
         self.entry = tk.Entry(self, bd=10)
-        submitButton = tk.Button(self, text="Submit", command=self.onButton)
-        submitButton.pack(side="right", padx=10)
+        phoneSubmitButton = tk.Button(self, text="Submit", command=self.onButton)
+        phoneSubmitButton.pack(side="right", padx=10)
         self.entry.pack(side="right", anchor = "center")
         phoneLabel = tk.Label(self, text="Phone number - Example: 11231231234")
         phoneLabel.pack(side="right", padx=25)
+        
+
 
 
     def onButton(self):
