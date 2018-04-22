@@ -55,12 +55,7 @@ def getPhoneNumber():
     file = open("phone.txt", "r")
     number = file.read()
     file.close()
-    print(number)
     return number
-
-
-def getCoin():
-    pass
 
 def getChangeMonth(coin):
     values = currency("month", coin)
