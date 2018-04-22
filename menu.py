@@ -52,6 +52,7 @@ class Ripple(Page):
         label = tk.Label(self, text="Ripple (XRP)")
         label.pack(side="top", fill="both", expand=True)
 
+
 class Eosio(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
@@ -74,12 +75,11 @@ class MainView(tk.Frame):
         p5 = Eosio(self)
         p6 = Home(self)
 
+        #create frames for buttons
         buttonframe = tk.Frame(self)
-        #homeframe = tk.Frame(self)
         container = tk.Frame(self)
         container2 = tk.Frame(self)
         buttonframe.pack(side="top", fill="x", padx = 10, pady=10, expand=False)
-        #homeframe.pack(side="bottom", fill="x", expand=False)
         container.pack(side="top", fill="both", expand=True)
         container2.pack(side="bottom", pady=10)
 
@@ -91,11 +91,12 @@ class MainView(tk.Frame):
         p5.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p6.place(in_=container, x=0, y=1, relwidth=1, relheight=1)
 
-        b1 = tk.Button(buttonframe, text="Bitcoin", bg="gray", fg="white", width = 20, height = 5, command=p1.lift)
-        b2 = tk.Button(buttonframe, text="Bitcoin Cash", bg="gray", fg="white", width = 20, height = 5, command=p2.lift)
-        b3 = tk.Button(buttonframe, text="Ethereum", bg="gray", fg="white", width = 20, height = 5, command=p3.lift)
-        b4 = tk.Button(buttonframe, text="Ripple", bg="gray", fg="white", width = 20, height = 5, command=p4.lift)
-        b5 = tk.Button(buttonframe, text="Eosio", bg="gray", fg="white", width = 20, height = 5, command=p5.lift)
+        #button properties
+        b1 = tk.Button(buttonframe, text="Bitcoin", bg="orange", fg="white", width = 20, height = 5, command=p1.show)
+        b2 = tk.Button(buttonframe, text="Bitcoin Cash", bg="green", fg="white", width = 20, height = 5, command=p2.show)
+        b3 = tk.Button(buttonframe, text="Ethereum", bg="gray", fg="white", width = 20, height = 5, command=p3.show)
+        b4 = tk.Button(buttonframe, text="Ripple", bg="blue", fg="white", width = 20, height = 5, command=p4.lift)
+        b5 = tk.Button(buttonframe, text="Eosio", bg="black", fg="white", width = 20, height = 5, command=p5.lift)
         b6 = tk.Button(container2, text="Menu", bg="gray", fg="white", width = 20, height = 5, command=p6.lift)
 
         b1.pack(side="left", padx=40)
@@ -111,6 +112,7 @@ if __name__ == "__main__":
     root = tk.Tk()
     main = MainView(root)
     main.pack(side="top", fill="both", expand=True)
+    root.title("Crypto Tracker")
     root.wm_geometry("1280x720")
     root.mainloop()
 
