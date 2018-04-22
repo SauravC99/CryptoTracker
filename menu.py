@@ -12,6 +12,9 @@ dict = {0 : 1,
 def gui():
     #initialize the menu
     menu = Tk()
+    menu.geometry('1280x720')
+    menu.title("Crypto Tracker")
+
     menubar = Menu(menu)
     filemenu = Menu(menubar, tearoff=0)
     filemenu.add_command(label="Ethereum")
@@ -22,18 +25,20 @@ def gui():
     filemenu.add_separator()
     filemenu.add_command(label="Exit", command=menu.quit)
     menubar.add_cascade(label="Currency", menu=filemenu)
+
     #create a frame for the menu - can be used to organize later
-    frame = Frame(menu, border = 10)
+    frame = Frame(menu)
+    var = StringVar()
     frame.pack()
-    #not sure why bottomframe is necessary yet
-    bottomframe = Frame(menu)
-    bottomframe.pack(side = BOTTOM)
-    #create resolution and title
-    menu.geometry('800x600')
-    menu.title("Crypto Tracker")
+
     #create button that graphs dictionary on press
-    button = Button(frame, text="Graph", bg='black', fg='white', command= lambda: graph.graph(dict))
-    button.pack(side = LEFT)
+    button = Button(menu, text="Windowed graph", bg='black', fg='white', command= lambda: graph.graph(dict))
+    button.pack(pady = 30)
+
+    buttonLabel = Label(frame, textvariable=var, font=("Times New Roman", 20))
+    var.set("This is a currency")
+    buttonLabel.pack(side=TOP)
+
     menu.config(menu=menubar)
     menu.mainloop()
 
