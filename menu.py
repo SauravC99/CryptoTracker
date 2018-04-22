@@ -118,11 +118,36 @@ class Settings(Page):
         phoneSubmitButton = tk.Button(self, text="Submit", command=self.onButton)
         phoneSubmitButton.pack(side="right", padx=10)
         self.entry.pack(side="right", anchor = "center")
-        phoneLabel = tk.Label(self, text="Phone number - Example: 11231231234")
+        phoneLabel = tk.Label(self, text="Phone number")
         phoneLabel.pack(side="right", padx=25)
-        
+
+        dayPercentageLabel = tk.Label(self, text="1 day SMS: Default 10")
+        dayPercentageLabel.pack(side="left", padx=25)
+        self.entryPercentageDay = tk.Entry(self, bd=10)
+        self.entryPercentageDay.pack(side="left", anchor="center")
+        dayPercentageButton = tk.Button(self, text="Submit", command=self.onButtonDay)
+        dayPercentageButton.pack(side="left", padx=10)
+
+        minutePercentageLabel = tk.Label(self, text="5 minute SMS: Default: 1")
+        minutePercentageLabel.pack(side="left")
+        self.entryPercentageMinute = tk.Entry(self, bd=10)
+        self.entryPercentageMinute.pack(side="left")
+        minutePercentageButton = tk.Button(self, text="Submit", command=self.onButtonMinute)
+        minutePercentageButton.pack(side="left")
 
 
+    def onButtonMinute(self):
+        percentage = self.entryPercentageMinute.get()
+        file = open("minutePercentage.txt", "w")
+        file.write(percentage)
+        file.close()
+
+
+    def onButtonDay(self):
+        percentage = self.entryPercentageDay.get()
+        file = open("dayPercentage.txt", "w")
+        file.write(percentage)
+        file.close()
 
     def onButton(self):
         number = self.entry.get()
