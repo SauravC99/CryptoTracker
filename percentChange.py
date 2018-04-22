@@ -44,6 +44,27 @@ def getCoin():
     #Get from graphics String
     pass
 
+def getChangeMonth():
+    values = currency("month", getCoin())
+    #Get a list of the values of the dictionary
+    values = list(values.values())
+    change = ((values[-1] - values[0]) / values[0]) * 100
+    return change
+
+def getChangeWeek():
+    values = currency("week", getCoin())
+    #Get a list of the values of the dictionary
+    values = list(values.values())
+    change = ((values[-1] - values[0]) / values[0]) * 100
+    return change
+
+def getChangeDay():
+    values = currency("day", getCoin())
+    #Get a list of the values of the dictionary
+    values = list(values.values())
+    change = ((values[-1] - values[0]) / values[0]) * 100
+    return change
+
 def main():
     while True:
         #Get dictionary from API
@@ -62,3 +83,4 @@ def main():
         time.sleep(300)
 
 main()
+
