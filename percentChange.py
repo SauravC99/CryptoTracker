@@ -1,11 +1,3 @@
-'''
-coninually check the prices in a loop
-compare to see if up or down
-see how much it goes up
-if growth slows, see how much it does
-when growth is <1% say it might fall now
-same for loss
-'''
 from API import *
 import time
 
@@ -17,22 +9,26 @@ def percentChange(price):
     global new
     global old
 
+    #Set old to last new price, update new price
     old = new
     new = price
 
+    #Find percent change
     change = ((new - old) / old) * 100
-    print(new)
-    print(old)
     return change
 
+def alert(percent):
+    pass
 
 def main():
     while True:
-        all_coins = getPrice()  # get dictionary from APIs
+        #Get dictionary from API
+        all_coins = getPrice()
         #Replace with coin from graphics
-        coin = all_coins["BTC"]#get the coin
+        coin = all_coins["BTC"]
         value = percentChange(coin)
         print(value)
+        #Loop every 5 minutes because that's when API updates
         time.sleep(300)
 
 main()
