@@ -1,7 +1,7 @@
 from __future__ import print_function
 from telesign.messaging import MessagingClient
-from CryptoTracker.historicalPrice import *
-from CryptoTracker.currentPrice import *
+from historicalPrice import *
+from currentPrice import *
 import time
 
 a = getPrice()
@@ -22,18 +22,17 @@ def percentChange(price):
     change = ((new - old) / old) * 100
     return change
 
-def alert(percent):
+def alert(percent, coin):
     #Telesign API Code
     customer_id = "BA0A590D-1B52-49E7-8C20-C082D986B309"
     api_key = "5TIV0NDzn2afvWmWscxjPidghGWEY+55hZYXSig4dgML6uUZ67pWvcGa9JtswmS1hea8GMP7HQmBHnB1gwIasg=="
 
     phone_number = getPhoneNumber()
 
-    global perCheck
-    if perCheck > 0:
-        message = "{0} has gone up {1} percent in the last 5 minutes!".format(getCoin(), percent)
-    if perCheck < 0:
-        message = "{0} has gone down {1} percent in the last 5 minutes!".format(getCoin(), percent)
+    if percent > 0:
+        message = "{0} has gone up {1} percent in the last 5 minutes!".format(coin, percent)
+    #if perCheck < 0:
+    #    message = "{0} has gone down {1} percent in the last 5 minutes!".format(coin, percent)
     message_type = "ARN"
 
     messaging = MessagingClient(customer_id, api_key)

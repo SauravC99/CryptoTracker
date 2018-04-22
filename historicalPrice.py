@@ -28,9 +28,9 @@ def currency(limit, symbol):
             dict_ = df[i]
             time = dict_["time"]
             # converting to a readable date from epoch time
-            simple_hour = datetime.datetime.fromtimestamp(time).strftime('%c')
-            simple_time = simple_hour[4:19]
-            _dict[simple_time] = df[i]["close"]
+            #simple_hour = datetime.datetime.fromtimestamp(time).strftime('%c')
+            #simple_time = simple_hour[4:19]
+            _dict[time] = df[i]["close"]
         return _dict
 
     # displays the prices for a week every hour
@@ -76,4 +76,4 @@ def main():
     time_frame = input("What time frame? (ex. month, day, week)")
     print(currency(time_frame, curr_input))
 
-main()
+#main()
