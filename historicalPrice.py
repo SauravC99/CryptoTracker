@@ -27,7 +27,10 @@ def currency(limit, symbol):
         for i in range(0,len(df),12):
             dict_ = df[i]
             time = dict_["time"]
-            _dict[time] = df[i]["close"]
+            # converting to a readable date from epoch time
+            simple_hour = datetime.datetime.fromtimestamp(time).strftime('%c')
+            simple_time = simple_hour[4:19]
+            _dict[simple_time] = df[i]["close"]
         return _dict
 
     # displays the prices for a week every hour
@@ -43,10 +46,13 @@ def currency(limit, symbol):
         for i in range(0, len(df), 1):
             dict_ = df[i]
             time = dict_["time"]
-            _dict[time] = df[i]["close"]
+            # converting to a readable date from epoch time
+            simple_hour = datetime.datetime.fromtimestamp(time).strftime('%c')
+            simple_time = simple_hour[4:19]
+            _dict[simple_time] = df[i]["close"]
         return _dict
     # displays the prices for a day every 20 minutes
-    #Returns 72 data points
+    # Returns 72 data points
     elif limit == "day":
         time = 1500
 
@@ -58,7 +64,10 @@ def currency(limit, symbol):
         for i in range(0, len(df), 20):
             dict_ = df[i]
             time = dict_["time"]
-            _dict[time] = df[i]["close"]
+            # converting to a readable date from epoch time
+            simple_hour = datetime.datetime.fromtimestamp(time).strftime('%c')
+            simple_time = simple_hour[4:19]
+            _dict[simple_time] = df[i]["close"]
         return _dict
 
 #asks for user input for currency and time frame
@@ -66,3 +75,5 @@ def main():
     curr_input = input("What currency do you want? (symbol; ex. (BTC)")
     time_frame = input("What time frame? (ex. month, day, week)")
     print(currency(time_frame, curr_input))
+
+main()
