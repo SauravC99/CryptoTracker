@@ -3,6 +3,8 @@ import CryptoTracker.historicalPrice as price
 import tkinter as tk
 from tkinter import messagebox
 import CryptoTracker.graph as graph
+import CryptoTracker.currentPrice as currentPrice
+import CryptoTracker.percentChange as percentChange
 
 # menubar = Menu(menu)
 # filemenu = Menu(menubar, tearoff=0)
@@ -23,9 +25,31 @@ class Page(tk.Frame):
 
 class Bitcoin(Page):
     def __init__(self, *args, **kwargs):
+        x = currentPrice.getPrice()
+        month = percentChange.getChangeMonth("BTC")
+        week = percentChange.getChangeWeek("BTC")
+        day = percentChange.getChangeDay("BTC")
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Current Bitcoin Price")
-        label.pack(side="top", pady=50)
+        label = tk.Label(self, text="The current price of Bitcoin is $" + str(x["BTC"]))
+        label.pack(side="top", pady=25)
+        monthLabel = tk.Label(self, text="The monthly change is {0:.2f}%".format(month))
+        if month >= 0:
+            monthLabel.config(fg="green")
+        else:
+            monthLabel.config(fg="red")
+        monthLabel.pack( side="top")
+        weekLabel = tk.Label(self, text="The weekly change is {0:.2f}%".format(week))
+        if week >= 0:
+            weekLabel.config(fg="green")
+        else:
+            weekLabel.config(fg="red")
+        weekLabel.pack(side="top")
+        dayLabel = tk.Label(self, text="The daily change is {0:.2f}%".format(day))
+        if day >= 0:
+            dayLabel.config(fg="green")
+        else:
+            dayLabel.config(fg="red")
+        dayLabel.pack(side="top")
         button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4,
                            command=lambda: graph.graph(price.currency("month", "BTC")))
         button.pack(side="left", padx=130, pady=50)
@@ -38,63 +62,79 @@ class Bitcoin(Page):
 
 class BitcoinCash(Page):
     def __init__(self, *args, **kwargs):
+        x = currentPrice.getPrice()
+        month = percentChange.getChangeMonth("BCH")
+        week = percentChange.getChangeWeek("BCH")
+        day = percentChange.getChangeDay("BCH")
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Current Bitcoin Cash Price")
+        label = tk.Label(self, text="The current price of Bitcoin Cash is $" + str(x["BCH"]))
         label.pack(side="top", pady=50)
         button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4,
-                           command=lambda: graph.graph(dict))
+                           command=lambda: graph.graph(price.currency("month", "BCH")))
         button.pack(side="left", padx=130, pady=50)
         button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4,
-                           command=lambda: graph.graph(dict))
+                           command=lambda: graph.graph(price.currency("week", "BCH")))
         button.pack(side="left", padx=60, pady=50)
         button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4,
-                           command=lambda: graph.graph(dict))
+                           command=lambda: graph.graph(price.currency("day", "BCH")))
         button.pack(side="left", padx=130, pady=50)
 
 class Ethereum(Page):
     def __init__(self, *args, **kwargs):
+        x = currentPrice.getPrice()
+        month = percentChange.getChangeMonth("ETH")
+        week = percentChange.getChangeWeek("ETH")
+        day = percentChange.getChangeDay("ETH")
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Current Ethereum Price")
+        label = tk.Label(self, text="The current price of Ethereum is $" + str(x["ETH"]))
         label.pack(side="top", pady=50)
         button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4,
-                           command=lambda: graph.graph(dict))
+                           command=lambda: graph.graph(price.currency("month", "ETH")))
         button.pack(side="left", padx=130, pady=50)
         button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4,
-                           command=lambda: graph.graph(dict))
+                           command=lambda: graph.graph(price.currency("week", "ETH")))
         button.pack(side="left", padx=60, pady=50)
         button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4,
-                           command=lambda: graph.graph(dict))
+                           command=lambda: graph.graph(price.currency("day", "ETH")))
         button.pack(side="left", padx=130, pady=50)
 
 class Ripple(Page):
     def __init__(self, *args, **kwargs):
+        x = currentPrice.getPrice()
+        month = percentChange.getChangeMonth("XRP")
+        week = percentChange.getChangeWeek("XRP")
+        day = percentChange.getChangeDay("XRP")
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Current Ripple Price")
+        label = tk.Label(self, text="The current price of Ripple is $" + str(x["XRP"]))
         label.pack(side="top", pady=50)
         button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4,
-                           command=lambda: graph.graph(dict))
+                           command=lambda: graph.graph(price.currency("month", "XRP")))
         button.pack(side="left", padx=130, pady=50)
         button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4,
-                           command=lambda: graph.graph(dict))
+                           command=lambda: graph.graph(price.currency("week", "XRP")))
         button.pack(side="left", padx=60, pady=50)
         button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4,
-                           command=lambda: graph.graph(dict))
+                           command=lambda: graph.graph(price.currency("day", "XRP")))
         button.pack(side="left", padx=130, pady=50)
 
 
 class Eosio(Page):
     def __init__(self, *args, **kwargs):
+        x = currentPrice.getPrice()
+        month = percentChange.getChangeMonth("EOS")
+        week = percentChange.getChangeWeek("EOS")
+        day = percentChange.getChangeDay("EOS")
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Current Eosio Price")
+        label = tk.Label(self, text="The current price of Eosio is $" + str(x["EOS"]))
         label.pack(side="top", pady=50)
         button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4,
-                           command=lambda: graph.graph(dict))
+                           command=lambda: graph.graph(price.currency("month", "EOS")))
         button.pack(side="left", padx=130, pady=50)
         button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4,
-                           command=lambda: graph.graph(dict))
+                           command=lambda: graph.graph(price.currency("week", "EOS")))
         button.pack(side="left", padx=60, pady=50)
         button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4,
-                           command=lambda: graph.graph(dict))
+                           command=lambda: graph.graph(price.currency("day", "EOS")))
         button.pack(side="left", padx=130, pady=50)
 
 class Home(Page):
