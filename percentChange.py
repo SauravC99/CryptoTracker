@@ -9,41 +9,26 @@ same for loss
 from API import *
 import time
 
-new = 0
-old = 0
+a = getPrice()
+new = a["BTC"]
+old = new
 
-def first(price):
+def percentChange(price):
     global new
     global old
 
-    prices = [new, old]
-
+    old = new
     new = price
-    old = prices[0]
-    prices[0] = new
-    prices[1] = old
-    return prices
 
-def percentChange(price):
-
-    prices = first(price)
-    prices = first(price)
-
-    change = ((prices[0] - prices[1]) / prices[1]) * 100
-    print(prices)
+    change = ((new - old) / old) * 100
+    print(new)
+    print(old)
     return change
-
-def getDict():
-    return getPrice()
-
-def getCoin():
-    #Get coin from Graphics
-    pass
 
 
 def main():
     while True:
-        all_coins = getDict()  # get dictionary from APIs
+        all_coins = getPrice()  # get dictionary from APIs
         #Replace with coin from graphics
         coin = all_coins["BTC"]#get the coin
         value = percentChange(coin)
