@@ -118,8 +118,10 @@ class Settings(Page):
         submitButton = tk.Button(self, text="Submit", command=self.onButton)
         submitButton.pack(side="right", padx=10)
         self.entry.pack(side="right", anchor = "center")
-        label = tk.Label(self, text="Phone number - Example: 11231231234")
-        label.pack(side="right", padx=25)
+        phoneLabel = tk.Label(self, text="Phone number - Example: 11231231234")
+        phoneLabel.pack(side="right", padx=25)
+
+
     def onButton(self):
         number = self.entry.get()
         file = open("phone.txt", "w")
