@@ -25,8 +25,6 @@ class Page(tk.Frame):
         tk.Frame.__init__(self, *args, **kwargs)
     def show(self):
         self.lift()
-    def hide(self):
-        self.destroy()
 
 class Bitcoin(Page):
     def __init__(self, *args, **kwargs):
@@ -78,7 +76,7 @@ class Ripple(Page):
         Page.__init__(self, *args, **kwargs)
         label = tk.Label(self, text="Current Ripple Price")
         label.pack(side="top", pady=50)
-        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=5,
+        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4,
                            command=lambda: graph.graph(dict))
         button.pack(side="left", padx=130, pady=50)
         button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4,
@@ -134,11 +132,9 @@ class MainView(tk.Frame):
         buttonframe = tk.Frame(self)
         container = tk.Frame(self)
         container2 = tk.Frame(self)
-        settingsContainer = tk.Frame(self)
         buttonframe.pack(side="top", fill="x", padx = 10, pady=10, expand=False)
         container.pack(side="top", fill="both", expand=True)
         container2.pack(side="bottom", pady=10)
-        settingsContainer.pack(side="right", pady=100)
 
         #place the name of the button page in the middle of screen
         p1.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
@@ -147,7 +143,6 @@ class MainView(tk.Frame):
         p4.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p5.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p6.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
-        p7.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 
         #button properties
         b1 = tk.Button(buttonframe, text="Bitcoin", bg="orange", fg="white", width = 20, height = 5, command=p1.lift)
@@ -156,7 +151,6 @@ class MainView(tk.Frame):
         b4 = tk.Button(buttonframe, text="Ripple", bg="blue", fg="white", width = 20, height = 5, command=p4.lift)
         b5 = tk.Button(buttonframe, text="Eosio", bg="black", fg="white", width = 20, height = 5, command=p5.lift)
         b6 = tk.Button(container2, text="Menu", bg="gray", fg="white", width = 20, height = 5, command=p6.lift)
-        #b7 = tk.Button(settingsContainer, text="Settings", bg="gray", fg="white", width = 0, height = 0, command=p7.lift)
 
         b1.pack(side="left", padx=40)
         b2.pack(side="left", padx=40)
@@ -164,7 +158,6 @@ class MainView(tk.Frame):
         b4.pack(side="left", padx=40)
         b5.pack(side="left", padx=40)
         b6.pack(side="bottom")
-        #b7.pack(side="bottom")
 
         menubar = tk.Menu(root)
         filemenu = tk.Menu(menubar, tearoff=0)
