@@ -12,57 +12,80 @@ import CryptoTracker.graph as graph
 # filemenu.add_command(label="Exit", command=menu.quit)
 # menubar.add_cascade(label="Currency", menu=filemenu)
 
-dict = {0 : 1,
-        1 : 4,
-        2 : 9,
-        3 : 16,
-        4 : 25,
-        5 : 36,
-        6 : 49,
-        7 : 64}
-
 
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
     def show(self):
         self.lift()
+    def hide(self):
+        self.destroy()
 
 class Bitcoin(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Bitcoin (BTC)")
-        label.pack(side="top", fill="both", expand=True)
+        label = tk.Label(self, text="Current Bitcoin Price")
+        label.pack(side="top", pady=50)
+        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4)
+        button.pack(side="left", padx=130, pady=50)
+        button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4)
+        button.pack(side="left", padx=60, pady=50)
+        button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4)
+        button.pack(side="left", padx=130, pady=50)
 
 class BitcoinCash(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Bitcoin Cash (BCH)")
-        label.pack(side="top", fill="both", expand=True)
+        label = tk.Label(self, text="Current Bitcoin Cash Price")
+        label.pack(side="top", pady=50)
+        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4)
+        button.pack(side="left", padx=130, pady=50)
+        button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4)
+        button.pack(side="left", padx=60, pady=50)
+        button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4)
+        button.pack(side="left", padx=130, pady=50)
 
 class Ethereum(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Ethereum (ETH)")
-        label.pack(side="top", fill="both", expand=True)
+        label = tk.Label(self, text="Current Ethereum Price")
+        label.pack(side="top", pady=50)
+        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4)
+        button.pack(side="left", padx=130, pady=50)
+        button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4)
+        button.pack(side="left", padx=60, pady=50)
+        button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4)
+        button.pack(side="left", padx=130, pady=50)
 
 class Ripple(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Ripple (XRP)")
-        label.pack(side="top", fill="both", expand=True)
+        label = tk.Label(self, text="Current Ripple Price")
+        label.pack(side="top", pady=50)
+        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4)
+        button.pack(side="left", padx=130, pady=50)
+        button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4)
+        button.pack(side="left", padx=60, pady=50)
+        button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4)
+        button.pack(side="left", padx=130, pady=50)
 
 
 class Eosio(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Eosio (EOS)")
-        label.pack(side="top", fill="both", expand=True)
+        label = tk.Label(self, text="Current Eosio Price")
+        label.pack(side="top", pady=50)
+        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4)
+        button.pack(side="left", padx=130, pady=50)
+        button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4)
+        button.pack(side="left", padx=60, pady=50)
+        button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4)
+        button.pack(side="left", padx=130, pady=50)
 
 class Home(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Homepage")
+        label = tk.Label(self, text="Click any of the buttons to begin")
         label.pack(side="bottom", fill="both", expand=True)
 
 class MainView(tk.Frame):
@@ -92,9 +115,9 @@ class MainView(tk.Frame):
         p6.place(in_=container, x=0, y=1, relwidth=1, relheight=1)
 
         #button properties
-        b1 = tk.Button(buttonframe, text="Bitcoin", bg="orange", fg="white", width = 20, height = 5, command=p1.show)
-        b2 = tk.Button(buttonframe, text="Bitcoin Cash", bg="green", fg="white", width = 20, height = 5, command=p2.show)
-        b3 = tk.Button(buttonframe, text="Ethereum", bg="gray", fg="white", width = 20, height = 5, command=p3.show)
+        b1 = tk.Button(buttonframe, text="Bitcoin", bg="orange", fg="white", width = 20, height = 5, command=p1.lift)
+        b2 = tk.Button(buttonframe, text="Bitcoin Cash", bg="green", fg="white", width = 20, height = 5, command=p2.lift)
+        b3 = tk.Button(buttonframe, text="Ethereum", bg="gray", fg="white", width = 20, height = 5, command=p3.lift)
         b4 = tk.Button(buttonframe, text="Ripple", bg="blue", fg="white", width = 20, height = 5, command=p4.lift)
         b5 = tk.Button(buttonframe, text="Eosio", bg="black", fg="white", width = 20, height = 5, command=p5.lift)
         b6 = tk.Button(container2, text="Menu", bg="gray", fg="white", width = 20, height = 5, command=p6.lift)
