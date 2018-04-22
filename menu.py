@@ -31,31 +31,31 @@ class Page(tk.Frame):
 class Bitcoin(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Bitcoin")
+        label = tk.Label(self, text="Bitcoin (BTC)")
         label.pack(side="top", fill="both", expand=True)
 
 class BitcoinCash(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Bitcoin Cash")
+        label = tk.Label(self, text="Bitcoin Cash (BCH)")
         label.pack(side="top", fill="both", expand=True)
 
 class Ethereum(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Ethereum")
+        label = tk.Label(self, text="Ethereum (ETH)")
         label.pack(side="top", fill="both", expand=True)
 
 class Ripple(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Ripple")
+        label = tk.Label(self, text="Ripple (XRP)")
         label.pack(side="top", fill="both", expand=True)
 
 class Eosio(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Eosio")
+        label = tk.Label(self, text="Eosio (EOS)")
         label.pack(side="top", fill="both", expand=True)
 
 class MainView(tk.Frame):
@@ -69,7 +69,7 @@ class MainView(tk.Frame):
 
         buttonframe = tk.Frame(self)
         container = tk.Frame(self)
-        buttonframe.pack(side="top", fill="x", expand=False)
+        buttonframe.pack(side="top", fill="x", padx = 10, pady=10, expand=False)
         container.pack(side="top", fill="both", expand=True)
 
         p1.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
@@ -78,11 +78,11 @@ class MainView(tk.Frame):
         p4.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p5.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 
-        b1 = tk.Button(buttonframe, text="Page 1", command=p1.lift)
-        b2 = tk.Button(buttonframe, text="Page 2", command=p2.lift)
-        b3 = tk.Button(buttonframe, text="Page 3", command=p3.lift)
-        b4 = tk.Button(buttonframe, text="Page 4", command=p4.lift)
-        b5 = tk.Button(buttonframe, text="Page 5", command=p5.lift)
+        b1 = tk.Button(buttonframe, text="Bitcoin", width = 20, height = 5, command=p1.lift)
+        b2 = tk.Button(buttonframe, text="Bitcoin Cash", width = 20, height = 5, command=p2.lift)
+        b3 = tk.Button(buttonframe, text="Ethereum", width = 20, height = 5, command=p3.lift)
+        b4 = tk.Button(buttonframe, text="Ripple", width = 20, height = 5, command=p4.lift)
+        b5 = tk.Button(buttonframe, text="Eosio", width = 20, height = 5, command=p5.lift)
 
         b1.pack(side="left")
         b2.pack(side="left")
@@ -96,7 +96,7 @@ if __name__ == "__main__":
     root = tk.Tk()
     main = MainView(root)
     main.pack(side="top", fill="both", expand=True)
-    root.wm_geometry("400x400")
+    root.wm_geometry("1280x720")
     root.mainloop()
 
 
