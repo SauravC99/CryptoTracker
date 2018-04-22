@@ -12,6 +12,13 @@ import CryptoTracker.graph as graph
 # filemenu.add_command(label="Exit", command=menu.quit)
 # menubar.add_cascade(label="Currency", menu=filemenu)
 
+dict = {0 : 1,
+        1 : 4,
+        2 : 9,
+        3 : 16,
+        4 : 25,
+        5 : 36}
+
 
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -26,11 +33,14 @@ class Bitcoin(Page):
         Page.__init__(self, *args, **kwargs)
         label = tk.Label(self, text="Current Bitcoin Price")
         label.pack(side="top", pady=50)
-        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4)
+        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4,
+                           command=lambda: graph.graph(dict))
         button.pack(side="left", padx=130, pady=50)
-        button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4)
+        button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4,
+                           command=lambda: graph.graph(dict))
         button.pack(side="left", padx=60, pady=50)
-        button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4)
+        button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4,
+                           command=lambda: graph.graph(dict))
         button.pack(side="left", padx=130, pady=50)
 
 class BitcoinCash(Page):
@@ -38,11 +48,14 @@ class BitcoinCash(Page):
         Page.__init__(self, *args, **kwargs)
         label = tk.Label(self, text="Current Bitcoin Cash Price")
         label.pack(side="top", pady=50)
-        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4)
+        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4,
+                           command=lambda: graph.graph(dict))
         button.pack(side="left", padx=130, pady=50)
-        button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4)
+        button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4,
+                           command=lambda: graph.graph(dict))
         button.pack(side="left", padx=60, pady=50)
-        button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4)
+        button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4,
+                           command=lambda: graph.graph(dict))
         button.pack(side="left", padx=130, pady=50)
 
 class Ethereum(Page):
@@ -50,11 +63,14 @@ class Ethereum(Page):
         Page.__init__(self, *args, **kwargs)
         label = tk.Label(self, text="Current Ethereum Price")
         label.pack(side="top", pady=50)
-        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4)
+        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4,
+                           command=lambda: graph.graph(dict))
         button.pack(side="left", padx=130, pady=50)
-        button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4)
+        button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4,
+                           command=lambda: graph.graph(dict))
         button.pack(side="left", padx=60, pady=50)
-        button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4)
+        button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4,
+                           command=lambda: graph.graph(dict))
         button.pack(side="left", padx=130, pady=50)
 
 class Ripple(Page):
@@ -62,11 +78,14 @@ class Ripple(Page):
         Page.__init__(self, *args, **kwargs)
         label = tk.Label(self, text="Current Ripple Price")
         label.pack(side="top", pady=50)
-        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4)
+        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4,
+                           command=lambda: graph.graph(dict))
         button.pack(side="left", padx=130, pady=50)
-        button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4)
+        button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4,
+                           command=lambda: graph.graph(dict))
         button.pack(side="left", padx=60, pady=50)
-        button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4)
+        button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4,
+                           command=lambda: graph.graph(dict))
         button.pack(side="left", padx=130, pady=50)
 
 
@@ -75,11 +94,14 @@ class Eosio(Page):
         Page.__init__(self, *args, **kwargs)
         label = tk.Label(self, text="Current Eosio Price")
         label.pack(side="top", pady=50)
-        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4)
+        button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4,
+                           command=lambda: graph.graph(dict))
         button.pack(side="left", padx=130, pady=50)
-        button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4)
+        button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4,
+                           command=lambda: graph.graph(dict))
         button.pack(side="left", padx=60, pady=50)
-        button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4)
+        button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4,
+                           command=lambda: graph.graph(dict))
         button.pack(side="left", padx=130, pady=50)
 
 class Home(Page):
@@ -87,6 +109,12 @@ class Home(Page):
         Page.__init__(self, *args, **kwargs)
         label = tk.Label(self, text="Click any of the buttons to begin")
         label.pack(side="bottom", fill="both", expand=True)
+
+#class Settings(Page):
+    #def __init__(self, *args, **kwargs):
+        #Page.__init__(self, *args, **kwargs)
+        #userInput = Entry(self)
+        #add text input for phone number
 
 class MainView(tk.Frame):
     def __init__(self, *args, **kwargs):
