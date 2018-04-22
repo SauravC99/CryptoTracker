@@ -142,21 +142,32 @@ class Settings(Page):
         messagebox.showerror("Error", "Phone number is not a valid length, enter an 11 digit phone number\n"
                                              "with country code. Example: 17146723892")
 
-    def onButtonMinute(self):
-        percentage = self.entryPercentageMinute.get()
-        file = open("minutePercentage.txt", "w")
-        file.write(percentage)
-        file.close()
+    def validatePercentage(self):
+        messagebox.showerror("Error", "Percentage must be above 0 and only numbers. Example: 14")
 
+    def onButtonMinute(self):
+        try:
+            percentage = self.entryPercentageMinute.get()
+            percentageFloat = float(percentage)
+            percentageString = str(percentageFloat)
+            file = open("minutePercentage.txt", "w")
+            file.write(percentageString)
+            file.close()
+        except ValueError:
+            self.validatePercentage()
 
     def onButtonDay(self):
-        percentage = self.entryPercentageDay.get()
-        file = open("dayPercentage.txt", "w")
-        file.write(percentage)
-        file.close()
+        try:
+            percentage = self.entryPercentageDay.get()
+            percentageFloat = float(percentage)
+            percentageString = str(percentageFloat)
+            file = open("dayPercentage.txt", "w")
+            file.write(percentageString)
+            file.close()
+        except ValueError:
+            self.validatePercentage()
 
     def onButton(self):
-        isLetter = 0
         number = self.entry.get()
         numberStrip = number.strip('.')
         if len(numberStrip) != 11:
