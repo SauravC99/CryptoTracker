@@ -23,7 +23,6 @@ dict = {0 : 1,
 
 
 
-
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
@@ -115,13 +114,14 @@ class Home(Page):
 class Settings(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        userInput = tk.Entry(self, bd=10)
-        submitButton = tk.Button(self, text="Submit")
+        self.entry = tk.Entry(self, bd=10)
+        submitButton = tk.Button(self, text="Submit", command=self.onButton)
         submitButton.pack(side="right", padx=10)
-        userInput.pack(side="right", anchor = "center")
+        self.entry.pack(side="right", anchor = "center")
         label = tk.Label(self, text="Phone number - Example: 11231231234")
         label.pack(side="right", padx=25)
-
+    def onButton(self):
+        print(self.entry.get())
 
 
 
@@ -190,5 +190,7 @@ if __name__ == "__main__":
     root.wm_geometry("1280x720")
 #
     root.mainloop()
+
+
 
 
