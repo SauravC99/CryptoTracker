@@ -1,38 +1,72 @@
-#This is the API Python file
+# #This is the API Python file
+#
+#
+# # # # # # LIMITS FOR COINMARKET CAP API # # # # #
+#
+# #   1. Limit requests to no more than 10 per minute #
+#
+# #   2. Endpoints update every 5 minutes             #
+#
+# # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+import requests
+import datetime
 
 
-# # # # # LIMITS FOR COINMARKET CAP API # # # # #
+def currency(limit, symbol):
+    # displays the prices for a month every half day
+    #Returns 60-62 data points
+    if limit == "month":
+        time = 730
 
-#   1. Limit requests to no more than 10 per minute #
+        url = 'https://min-api.cryptocompare.com/data/histohour?fsym={}&tsym={}&limit={}&aggregate={}' \
+                .format(symbol, "USD", time, 1)
+        page = requests.get(url)
+        _dict = {}
+        df = page.json()['Data']
+        for i in range(0,len(df),12):
+            dict_ = df[i]
+            time = dict_["time"]
+            _dict[time] = df[i]["close"]
+        return _dict
 
-#   2. Endpoints update every 5 minutes             #
+    # displays the prices for a week every hour
+    #Returns 168 data points
+    elif limit == "week":
+        time = 168
+        url = 'https://min-api.cryptocompare.com/data/histohour?fsym={}&tsym={}&limit={}&aggregate={}' \
+            .format(symbol, "USD", time, 1)
+        page = requests.get(url)
+        _dict = {}
+        df = page.json()['Data']
+        range_= len(df)
+        for i in range(0, len(df), 1):
+            dict_ = df[i]
+            time = dict_["time"]
+            _dict[time] = df[i]["close"]
+        return _dict
+    # displays the prices for a day every 20 minutes
+    #Returns 72 data points
+    elif limit == "day":
+        time = 1500
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # #
-#import needed modules
+        url = 'https://min-api.cryptocompare.com/data/histominute?fsym={}&tsym={}&limit={}&aggregate={}' \
+            .format(symbol, "USD", time, 1)
+        page = requests.get(url)
+        _dict = {}
+        df = page.json()['Data']
+        for i in range(0, len(df), 20):
+            dict_ = df[i]
+            time = dict_["time"]
+            _dict[time] = i
+        return _dict
 
-import coinmarketcap
+#asks for user input for currency and time frame
+def main():
+    curr_input = input("What currency do you want? (symbol; ex. (BTC)")
+    time_frame = input("What time frame? (ex. month, day, week)")
+    print(currency(time_frame, curr_input))
 
-def getPrice():
 
-    market = coinmarketcap.Market()
-
-    #this is a dictionary of the top 5 cryptocurrency
-    #to index a specific item:
-    #print(coin_dictionary["name of crypto"][0]["name of what you want to print, i.e "id"]
-    coin_dictionary = {"BTC" : market.ticker("Bitcoin"),
-    "ETH" : market.ticker("Ethereum"),
-    "XRP" : market.ticker("Ripple"),
-    "BCH" : market.ticker("bitcoin-cash"),
-    "EOS" : market.ticker("EOS")}
-
-    price_and_value_dictionary = {}
-    # this loops through each key in the dictionary and retrieves the symbol and price
-    # for each currency.
-    for key in coin_dictionary:
-
-        symbol = coin_dictionary[key][0]["symbol"]
-        price = coin_dictionary[key][0]["price_usd"]
-        price_and_value_dictionary[symbol] = float(price)
-    return(price_and_value_dictionary)
-getPrice()
+main()
 
