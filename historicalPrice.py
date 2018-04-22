@@ -68,5 +68,3 @@ def main():
     print(currency(time_frame, curr_input))
 
 
-main()
-

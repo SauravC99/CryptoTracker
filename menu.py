@@ -1,5 +1,5 @@
 #Nathan Gardner
-
+import CryptoTracker.historicalPrice as price
 import tkinter as tk
 from tkinter import messagebox
 import CryptoTracker.graph as graph
@@ -15,17 +15,6 @@ import CryptoTracker.graph as graph
 # filemenu.add_command(label="Exit", command=menu.quit)
 # menubar.add_cascade(label="Currency", menu=filemenu)
 
-dict = {0 : 1,
-        1 : 4,
-        2 : 9,
-        3 : 16,
-        4 : 25,
-        5 : 36}
-
-
-
-
-
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
@@ -38,13 +27,13 @@ class Bitcoin(Page):
         label = tk.Label(self, text="Current Bitcoin Price")
         label.pack(side="top", pady=50)
         button = tk.Button(self, text="Graph (1 Month)", bg="purple", fg="white", width=25, height=4,
-                           command=lambda: graph.graph(dict))
+                           command=lambda: graph.graph(price.currency("month", "BTC")))
         button.pack(side="left", padx=130, pady=50)
         button = tk.Button(self, text="Graph (1 Week)", bg="purple", fg="white", width=25, height=4,
-                           command=lambda: graph.graph(dict))
+                           command=lambda: graph.graph(price.currency("week", "BTC")))
         button.pack(side="left", padx=60, pady=50)
         button = tk.Button(self, text="Graph (1 Day)", bg="purple", fg="white", width=25, height=4,
-                           command=lambda: graph.graph(dict))
+                           command=lambda: graph.graph(price.currency("day", "BTC")))
         button.pack(side="left", padx=130, pady=50)
 
 class BitcoinCash(Page):

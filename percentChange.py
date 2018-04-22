@@ -1,12 +1,12 @@
 from __future__ import print_function
 from telesign.messaging import MessagingClient
-from historicalPrice import *
-from currentPrice import *
+from CryptoTracker.historicalPrice import *
+from CryptoTracker.currentPrice import *
 import time
 
 a = getPrice()
 new = a["BTC"]
-old =
+old = new
 
 perCheck = 0
 
@@ -39,16 +39,27 @@ def alert(percent):
     messaging = MessagingClient(customer_id, api_key)
     response = messaging.message(phone_number, message, message_type)
 
-def getThreshold():
-    #Get from graphics float
-    pass
+def getDayThreshold():
+    file = open("dayPercentage.txt", "r")
+    dayPercentage = file.read()
+    file.close()
+    return float(dayPercentage)
+
+def getMinuteThreshold():
+    file = open("minutePercentage.txt", "r")
+    minutePercentage = file.read()
+    file.close()
+    return float(minutePercentage)
 
 def getPhoneNumber():
-    #Get number from graphics int
-    pass
+    file = open("phone.txt", "r")
+    number = file.read()
+    file.close()
+    print(number)
+    return number
+
 
 def getCoin():
-    #Get from graphics String
     pass
 
 def getChangeMonth():
@@ -77,7 +88,7 @@ def main():
         #Get dictionary from API
         all_coins = getPrice()
         #Replace with coin from graphics
-        coin = all_coins[getCoin()]
+        coin = all_coins["BTC"]
 
         #Get percent change
         value = percentChange(coin)
@@ -86,7 +97,7 @@ def main():
         perCheck = value
         if value < 0:
             value = value * -1
-        if value >= getThreshold():
+        if value >= getDayThreshold() or value >= getMinuteThreshold():
             alert(value)
 
         print(value)
