@@ -12,7 +12,7 @@ import time
 new = 0
 old = 0
 
-def predict(price):
+def first(price):
     global new
     global old
 
@@ -22,8 +22,16 @@ def predict(price):
     old = prices[0]
     prices[0] = new
     prices[1] = old
-
     return prices
+
+def percentChange(price):
+
+    prices = first(price)
+    prices = first(price)
+
+    change = ((prices[0] - prices[1]) / prices[1]) * 100
+    print(prices)
+    return change
 
 def getDict():
     return getPrice()
@@ -38,14 +46,9 @@ def main():
         all_coins = getDict()  # get dictionary from APIs
         #Replace with coin from graphics
         coin = all_coins["BTC"]#get the coin
-        value = predict(coin)
-        if value[0] == value[1]:
-            print("No change")
-        elif value[0] > value[1]:
-            print("More")
-        else:
-            print("less")
-        time.sleep(3)
+        value = percentChange(coin)
+        print(value)
+        time.sleep(300)
 
 main()
 
