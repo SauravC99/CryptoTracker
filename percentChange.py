@@ -6,7 +6,9 @@ import time
 
 a = getPrice()
 new = a["BTC"]
-old = new
+old =
+
+perCheck = 0
 
 def percentChange(price):
     global new
@@ -26,7 +28,12 @@ def alert(percent):
     api_key = "5TIV0NDzn2afvWmWscxjPidghGWEY+55hZYXSig4dgML6uUZ67pWvcGa9JtswmS1hea8GMP7HQmBHnB1gwIasg=="
 
     phone_number = getPhoneNumber()
-    message = "{0} has gone up {1} percent in the last 5 minutes!".format(getCoin(), percent)
+
+    global perCheck
+    if perCheck > 0:
+        message = "{0} has gone up {1} percent in the last 5 minutes!".format(getCoin(), percent)
+    if perCheck < 0:
+        message = "{0} has gone down {1} percent in the last 5 minutes!".format(getCoin(), percent)
     message_type = "ARN"
 
     messaging = MessagingClient(customer_id, api_key)
@@ -75,6 +82,10 @@ def main():
         #Get percent change
         value = percentChange(coin)
         #Send SMS alert if it is greater than user's threshold
+        global perCheck
+        perCheck = value
+        if value < 0:
+            value = value * -1
         if value >= getThreshold():
             alert(value)
 
