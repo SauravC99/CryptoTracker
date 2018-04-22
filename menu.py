@@ -20,6 +20,10 @@ dict = {0 : 1,
         5 : 36}
 
 
+
+
+
+
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
@@ -111,11 +115,15 @@ class Home(Page):
 class Settings(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        userInput = tk.Entry(self)
-        userInput.pack(side="right")
-        label = tk.Label(self, text="Phone number")
-        label.pack(side="right")
-        #add text input for phone number
+        userInput = tk.Entry(self, bd=10)
+        submitButton = tk.Button(self, text="Submit")
+        submitButton.pack(side="right", padx=10)
+        userInput.pack(side="right", anchor = "center")
+        label = tk.Label(self, text="Phone number - Example: 11231231234")
+        label.pack(side="right", padx=25)
+
+
+
 
 class MainView(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -132,9 +140,11 @@ class MainView(tk.Frame):
         buttonframe = tk.Frame(self)
         container = tk.Frame(self)
         container2 = tk.Frame(self)
+        settingsContainer = tk.Frame(self)
         buttonframe.pack(side="top", fill="x", padx = 10, pady=10, expand=False)
         container.pack(side="top", fill="both", expand=True)
         container2.pack(side="bottom", pady=10)
+        settingsContainer.pack(side="right")
 
         #place the name of the button page in the middle of screen
         p1.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
@@ -143,14 +153,16 @@ class MainView(tk.Frame):
         p4.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p5.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p6.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        p7.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 
         #button properties
-        b1 = tk.Button(buttonframe, text="Bitcoin", bg="orange", fg="white", width = 20, height = 5, command=p1.lift)
-        b2 = tk.Button(buttonframe, text="Bitcoin Cash", bg="green", fg="white", width = 20, height = 5, command=p2.lift)
-        b3 = tk.Button(buttonframe, text="Ethereum", bg="gray", fg="white", width = 20, height = 5, command=p3.lift)
-        b4 = tk.Button(buttonframe, text="Ripple", bg="blue", fg="white", width = 20, height = 5, command=p4.lift)
-        b5 = tk.Button(buttonframe, text="Eosio", bg="black", fg="white", width = 20, height = 5, command=p5.lift)
+        b1 = tk.Button(buttonframe, text="Bitcoin (BTC)", bg="orange", fg="white", width = 20, height = 5, command=p1.lift)
+        b2 = tk.Button(buttonframe, text="Bitcoin Cash (BCH)", bg="green", fg="white", width = 20, height = 5, command=p2.lift)
+        b3 = tk.Button(buttonframe, text="Ethereum (ETH)", bg="gray", fg="white", width = 20, height = 5, command=p3.lift)
+        b4 = tk.Button(buttonframe, text="Ripple (XRP)", bg="blue", fg="white", width = 20, height = 5, command=p4.lift)
+        b5 = tk.Button(buttonframe, text="Eosio (EOS)", bg="black", fg="white", width = 20, height = 5, command=p5.lift)
         b6 = tk.Button(container2, text="Menu", bg="gray", fg="white", width = 20, height = 5, command=p6.lift)
+        b7 = tk.Button(settingsContainer, text="Settings", bg="gray", fg="white", width = 20, height = 5, command=p7.lift)
 
         b1.pack(side="left", padx=40)
         b2.pack(side="left", padx=40)
